@@ -1,4 +1,12 @@
 containerDiv = document.querySelector('#container');
+console.log(containerDiv);
+
+containerDiv.addEventListener('mouseover', (event) => {
+    if (event.target.classList.contains('gridSquare')) {
+        event.target.classList.add('triggered');
+    }
+    
+})
 
 const startingSize = 16;
 
