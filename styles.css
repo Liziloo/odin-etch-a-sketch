@@ -1,7 +1,17 @@
 #container {
     display: flex;
-    width: 80vh;
-    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sizeButton {
+    margin: 20px;
+}
+
+#grid {
+    display: flex;
+    width: 85vh;
+    height: 85vh;
 }
 
 .gridCol {
@@ -14,7 +24,6 @@
 
 .gridSquare {
     flex: 1;
-    border: 1px solid black;
 }
 
 .triggered {

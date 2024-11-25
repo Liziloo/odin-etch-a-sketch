@@ -1,7 +1,15 @@
 containerDiv = document.querySelector('#container');
-console.log(containerDiv);
 
-containerDiv.addEventListener('mouseover', (event) => {
+sizeButton = document.createElement('button');
+sizeButton.textContent = 'Grid Size';
+sizeButton.id = 'sizeButton';
+containerDiv.appendChild(sizeButton);
+
+gridDiv = document.createElement('div');
+gridDiv.id = 'grid';
+containerDiv.appendChild(gridDiv);
+
+gridDiv.addEventListener('mouseover', (event) => {
     if (event.target.classList.contains('gridSquare')) {
         event.target.classList.add('triggered');
     }
@@ -18,14 +26,22 @@ function createGrid(size) {
         const colDiv = document.createElement('div');
         colDiv.classList.add('gridCol');
 
-        // Create one box per column
+        // Create one box per row
         for (let j = 0; j < size; j++) {
             const rowDiv = document.createElement('div');
             rowDiv.id = `div${i}-${j}`;
             rowDiv.classList.add('gridSquare');
             colDiv.appendChild(rowDiv);
         }
-        containerDiv.appendChild(colDiv);
+        gridDiv.appendChild(colDiv);
     }
     
 }
+
+sizeButton.addEventListener('click', () => {
+    newSize = Number(prompt('What size grid?'));
+    if (Number.isInteger(newSize) && newSize > 0 && newSize <= 100) {
+        gridDiv.innerHTML = '';
+        createGrid(newSize);
+    }
+})
